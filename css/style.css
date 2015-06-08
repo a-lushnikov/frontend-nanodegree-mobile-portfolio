@@ -47,3 +47,16 @@ footer span { float: right; font-style: italic; }
   body { font-size: 12px;}
   header p { padding-left: 4.5em;}
 }
+
+
+.mover {
+  transform: translateZ(0);
+}
+
+#pizzaGenerator {
+  transform: translateZ(0);
+}
+
+#header {
+  transform: translateZ(0);
+}
