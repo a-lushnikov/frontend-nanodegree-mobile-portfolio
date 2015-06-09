@@ -16,7 +16,6 @@ Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
 */
 
-// As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
@@ -289,7 +288,9 @@ var nouns = ["animals", "everyday", "fantasy", "gross", "horror", "jewelry", "pl
 function generator(adj, noun) {
   var adjectives = getAdj(adj);
   var nouns = getNoun(noun);
-  // do not use parseInt to avoid unnecessary string->numeric conversions
+
+  // FIX:
+  // Not using parseInt to avoid unnecessary string->numeric conversions
   var randomAdjective = Math.floor(Math.random() * adjectives.length);
   var randomNoun = Math.floor(Math.random() * nouns.length);
   var name = "The " + adjectives[randomAdjective].capitalize() + " " + nouns[randomNoun].capitalize();
@@ -298,7 +299,8 @@ function generator(adj, noun) {
 
 // Chooses random adjective and random noun
 function randomName() {
-  // do not use parseInt to avoid unnecessary string->numeric conversions
+  // FIX:
+  // Not using parseInt to avoid unnecessary string->numeric conversions
   var randomNumberAdj = Math.floor(Math.random() * adjectives.length);
   var randomNumberNoun = Math.floor(Math.random() * nouns.length);
   return generator(adjectives[randomNumberAdj], nouns[randomNumberNoun]);
@@ -423,6 +425,9 @@ var resizePizzas = function(size) {
 
   changeSliderLabel(size);
 
+  // FIX:
+  // Moved sizeSwitcher from determineDx to avoid unnecessary function recreations
+
   // Changes the slider value to a percent width
   function sizeSwitcher (size) {
     switch(size) {
@@ -437,6 +442,8 @@ var resizePizzas = function(size) {
     }
   }
 
+  // FIX:
+  // determineDx refactored to prevent FSL
   // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (windowwidth, elem, size) {
     var oldwidth = elem.offsetWidth;
@@ -451,6 +458,8 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
+    // FIX:
+    // function refactored to prevent FSL
     var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
 
     // do read to prevent FSL
